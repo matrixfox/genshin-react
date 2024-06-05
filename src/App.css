@@ -28,6 +28,27 @@
   color: #61dafb;
 }
 
+
+#div1, #div2, #div3, #div4 {
+  width: 200px;
+  height: 200px;
+  border: 1px solid black;
+}
+
+#div1 img, #div2 img, #div3 img, #div4 img {
+  display: inline-block;
+  vertical-align: middle; /* Aligns the image vertically in the middle */
+  max-height: 100%; /* Ensure the image does not overflow the div’s height */
+  max-width: 100%; /* Scale the image to fit the width while maintaining aspect ratio */
+}
+
+#teamSelect {
+  background-color: #8a8a8a;
+}
+#teamSelect img {
+  max-width: 100px;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

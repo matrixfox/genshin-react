@@ -108,17 +108,17 @@ class DragAndDrop extends React.Component {
 
   render() {
     return (
-      <div class="container-xxl bd-gutter mt-3 my-md-4 bd-layout">
+      <div className="container-xxl bd-gutter mt-3 my-md-4 bd-layout">
         <h2>Genshin Impact Party Builder</h2>
         <p>Drag the characters back and forth as see fit.</p>
 
-        <div class="container text-center">
-            <div class="row">
-              <div class="col" id="div1" onDrop={this.drop} onDragOver={this.allowDrop}></div>
-              <div class="col" id="div2" onDrop={this.drop} onDragOver={this.allowDrop}></div>
-              <div class="col" id="div3" onDrop={this.drop} onDragOver={this.allowDrop}></div>
-              <div class="col" id="div4" onDrop={this.drop} onDragOver={this.allowDrop}></div>
-            </div>
+        <div className="container text-center">
+          <div className="row">
+            <div className="col" id="div1" onDrop={this.drop} onDragOver={this.allowDrop}></div>
+            <div className="col" id="div2" onDrop={this.drop} onDragOver={this.allowDrop}></div>
+            <div className="col" id="div3" onDrop={this.drop} onDragOver={this.allowDrop}></div>
+            <div className="col" id="div4" onDrop={this.drop} onDragOver={this.allowDrop}></div>
+          </div>
         </div>
 
         <div id="teamSelect" onDrop={this.drop} onDragOver={this.allowDrop}>

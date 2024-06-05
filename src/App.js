@@ -74,23 +74,26 @@ class DragAndDrop extends React.Component {
     const data = ev.dataTransfer.getData("text");
     const target = ev.target;
     const draggedElement = document.getElementById(data);
-
-    // Check if the target is divTeamSelect or an existing image within the #teamSelect div
-    if (target.id === "teamSelect" || target.tagName === "IMG") {
-      // If the target is an existing image, insert the dragged element before the target image
-      if (target.tagName === "IMG") {
-        // If previous target element sibling is null, insert image before target
-        if (target.previousElementSibling) {
-          target.parentNode.insertBefore(draggedElement, target);
+  
+    // Check if the dragged element and target element are valid nodes
+    if (draggedElement && target) {
+      // Check if the target is divTeamSelect or an existing image within the #teamSelect div
+      if (target.id === "teamSelect" || target.tagName === "IMG") {
+        // If the target is an existing image, insert the dragged element before the target image
+        if (target.tagName === "IMG") {
+          // If previous target element sibling is null, insert image before target
+          if (target.previousElementSibling) {
+            target.parentNode.insertBefore(draggedElement, target);
+          }
+        } else {
+          // If the target is the #teamSelect div itself, append the dragged element to the end
+          target.appendChild(draggedElement);
         }
       } else {
-        // If the target is the #teamSelect div itself, append the dragged element to the end
-        target.appendChild(draggedElement);
-      }
-    } else {
-      // Append the dragged element to the target div
-      if (target.children.length === 0) {
-        target.appendChild(draggedElement);
+        // Append the dragged element to the target div
+        if (target.children.length === 0) {
+          target.appendChild(draggedElement);
+        }
       }
     }
   }

@@ -74,35 +74,24 @@ class DragAndDrop extends React.Component {
     const data = ev.dataTransfer.getData("text");
     const target = ev.target;
     const draggedElement = document.getElementById(data);
-  
-    console.log("Target:", target);
-    console.log("Dragged Element:", draggedElement);
-  
-    // Check if the dragged element is null or if the target div is the same as the dragged element
-    if (!draggedElement || target === draggedElement) {
-      // If yes, return early without performing any action
-      return;
-    }
-  
-    // Check if the target is not null and if the drop event occurred inside one of the target divs
-    if (!target || (target.id !== "teamSelect" && target.id !== "div1" && target.id !== "div2" && target.id !== "div3" && target.id !== "div4")) {
-      // If not, return early without performing any actions
-      return;
-    }
 
-    // Check if the target is divTeamSelect
-    if (target.id === "teamSelect") {
-      // If yes, append the dragged element to the target div
-      target.appendChild(draggedElement);
-    } else {
-      // If no, check if the target already contains an image
-      if (target.children.length > 0) {
-        // If yes, return early without appending another image
-        return;
+    // Check if the target is divTeamSelect or an existing image within the #teamSelect div
+    if (target.id === "teamSelect" || target.tagName === "IMG") {
+      // If the target is an existing image, insert the dragged element before the target image
+      if (target.tagName === "IMG") {
+        // If previous target element sibling is null, insert image before target
+        if (target.previousElementSibling) {
+          target.parentNode.insertBefore(draggedElement, target);
+        }
+      } else {
+        // If the target is the #teamSelect div itself, append the dragged element to the end
+        target.appendChild(draggedElement);
       }
-
+    } else {
       // Append the dragged element to the target div
-      target.appendChild(draggedElement);
+      if (target.children.length === 0) {
+        target.appendChild(draggedElement);
+      }
     }
   }
 
